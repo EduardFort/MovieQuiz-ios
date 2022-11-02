@@ -90,17 +90,20 @@ class QuestionFactory: QuestionFactoryProtocol {
             
             let rating = Float(movie.rating) ?? 0
             
-            let ratingTexts: [String] = ["Рейтинг этого фильма больше чем 8?","Рейтинг этого фильма больше чем 8.5?","Рейтинг этого фильма больше чем 9?","Рейтинг этого фильма больше чем 9.5?","Рейтинг этого фильма больше чем 7?","Рейтинг этого фильма больше чем 7.5?"]
+
+            let randomRate = (Float.random(in: 8.0...9.2)*10).rounded()/10
             
-            let text = ratingTexts.randomElement()
+            let text = "Рейтинг этого фильма больше чем \(randomRate)"
             
-            let correctAnswer = rating >= 7
-        
-            guard let text = text else {return}
+            let correctAnswer = true
+            
+            let notCorrectAnswer = false
+            
+            let equals = rating >= randomRate ? correctAnswer : notCorrectAnswer
             
             let question = QuizQuestion(image: imageData,
-                                         text: text,
-                                         correctAnswer: correctAnswer)
+                                        text: text,
+                                        correctAnswer: equals)
             
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
