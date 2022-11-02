@@ -118,15 +118,16 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="F2i-ly-XlM" userLabel="Activity Indicator">
-                                <rect key="frame" x="20" y="438" width="374" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="F2i-ly-XlM" userLabel="Activity Indicator">
+                                <rect key="frame" x="197" y="445" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="Black"/>
                         <constraints>
                             <constraint firstItem="SbY-VN-hji" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="2AV-4I-PFF"/>
+                            <constraint firstItem="F2i-ly-XlM" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="4e6-rg-H3s"/>
+                            <constraint firstItem="F2i-ly-XlM" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="6Of-Oh-iDN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SbY-VN-hji" secondAttribute="bottom" id="Ne9-Gi-4Hn"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SbY-VN-hji" secondAttribute="trailing" constant="20" id="Tvm-4B-MgV"/>
                             <constraint firstItem="SbY-VN-hji" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="qBw-bg-aFA"/>
