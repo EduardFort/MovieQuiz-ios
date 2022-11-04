@@ -89,23 +89,23 @@ class QuestionFactory: QuestionFactoryProtocol {
             }
             
             let rating = Float(movie.rating) ?? 0
-            
+
             let randomRate = (Float.random(in: 8.0...9.2) * 10).rounded() / 10
-            
+
             let randomPhraseArray: [String] = ["больше","меньше"]
-            
+
             let phrase = randomPhraseArray.randomElement()
-            
+
             guard let phrase = phrase else {return}
-            
+
             let text = "Рейтинг этого фильма \(phrase) чем \(randomRate)?"
-            
+
             let correctAnswerIfMore = rating > randomRate
-            
+
             let correctAnswerIfLess = rating < randomRate
-            
+
             let correctAnswer = randomPhraseArray[0] == phrase ? correctAnswerIfMore : correctAnswerIfLess
-            
+
             let question = QuizQuestion(image: imageData,
                                         text: text,
                                         correctAnswer: correctAnswer)
