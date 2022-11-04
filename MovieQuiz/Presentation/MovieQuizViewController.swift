@@ -27,10 +27,11 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     
     private var currentQuestion: QuizQuestion?
     
-    private let statisticService: StatisticService = StatisticServiceImplementation()
+    private var staticService: StaticService?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        staticService = StaticServiceImplementation()
         alertPresenter = AlertPresenter(viewController: self)
         questionFactory = QuestionFactory(delegate: self, moviesLoader: MoviesLoader())
         questionFactory?.loadData()
@@ -42,18 +43,14 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
         guard let currentQuestion = currentQuestion else {
             return
         }
-        
         showAnswerResult(isCorrect:currentQuestion.correctAnswer == true)
-        
     }
     
     @IBAction private func noButtonClicked(_ sender: Any) {
         guard let currentQuestion = currentQuestion else {
             return
         }
-        
         showAnswerResult(isCorrect:currentQuestion.correctAnswer == false)
-        
     }
     
     private func showLoadingIndicator(){
@@ -69,14 +66,12 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     private func showNetworkError( message:String){
         hideLoadingIndicator()
         
-        let errorAlertModel = AlertModel(alertTitle: "Ошибка", alertMessage: message, alertButtonText: "Попробовать еще раз"){[weak self] _ in guard let self = self else {return}
-            self.showNextQuestionOrResults()
-        }
+        let errorAlertModel = AlertModel(title: "Ошибка", message: message, buttonText: "Попробовать еще раз")
         
-        alertPresenter?.showAlert(alertModel: errorAlertModel)
+        alertPresenter?.showAlert(model: errorAlertModel)
+        showNextQuestionOrResults()
         
     }
-    
     
     // MARK: - QuestionFactoryDelegate
     
@@ -137,45 +132,37 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
             guard let self = self else {return}
             self.showNextQuestionOrResults()
         }
-        
-    }
-    
-    private func show(quiz result: QuizResultsViewModel) {
-        let alertModel = AlertModel(
-            alertTitle: result.title,
-            alertMessage: result.text,
-            alertButtonText: result.buttonText) { [weak self] _ in
-                guard let self = self else { return }
-                self.currentQuestionIndex = 0
-                self.correctAnswers = 0
-                self.questionFactory?.requestNextQuestion()
-                
-            }
-        alertPresenter?.showAlert(alertModel: alertModel)
     }
     
     private func showNextQuestionOrResults() {
         if currentQuestionIndex == questionsAmount - 1 {
-            statisticService.store(correct: correctAnswers, total: questionsAmount)
-            
-            let alertText = """
-            Ваш результат: \(correctAnswers)/\(questionsAmount)
-            Количество сыгранных квизов: \(statisticService.gamesCount)
-            Рекорд: \(statisticService.bestGame.toString())
-            Средняя точность: \(String(format: "%.2f", statisticService.totalAccuracy))%
+            guard let staticService = staticService else {return}
+            staticService.store(correct: correctAnswers, total: questionsAmount)
+            let text = """
+            Ваш результат \(correctAnswers)/10
+            Количество сыгранных квизов: \(staticService.gamesCount)
+            Рекорд: \(staticService.bestGame.toString())
+            Средняя точность: \(String(format: "%.2f", staticService.totalAccuracy))%"
             """
+            let buttonText = "Сыграть ещё раз"
+            let title = "Этот раунд окончен!"
             
-            let viewModel = QuizResultsViewModel(
-                title: "Этот раунд окончен!",
-                text: alertText,
-                buttonText: "Сыграть еще раз")
+            let model = AlertModel(
+                title: title,
+                message: text,
+                buttonText: buttonText)
             
-            show(quiz: viewModel)
+            self.currentQuestionIndex = 0
+            self.questionFactory?.requestNextQuestion()
+            
+            alertPresenter?.showAlert(model: model)
+            
         } else {
             currentQuestionIndex += 1
             questionFactory?.requestNextQuestion()
         }
     }
+    
 }
 
 
