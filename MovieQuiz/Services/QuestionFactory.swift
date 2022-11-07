@@ -88,24 +88,24 @@ class QuestionFactory: QuestionFactoryProtocol {
                 print("Failed to load image")
             }
             
-            let rating = Float(movie.rating) ?? 0
+            let trueRating = Float(movie.rating) ?? 0
             
-            let randomRate = (Float.random(in: 8.0...9.2) * 10).rounded() / 10
+            let questionRating = (Float.random(in: 8.0...9.2) * 10).rounded() / 10
             
             let randomPhraseArray: [String] = ["больше","меньше"]
             
-            let phrase = randomPhraseArray.randomElement()
+            let moreOrLessPhase = randomPhraseArray.randomElement()
             
-            guard let phrase = phrase else {return}
+            guard let moreOrLessPhase = moreOrLessPhase else {return}
             
-            let text = "Рейтинг этого фильма \(phrase) чем \(randomRate)?"
+            let text = "Рейтинг этого фильма \(moreOrLessPhase) чем \(questionRating)?"
             
-            let correctAnswerIfMore = rating > randomRate
+            let correctAnswerIfMore = trueRating > questionRating
             
-            let correctAnswerIfLess = rating < randomRate
+            let correctAnswerIfLess = trueRating < questionRating
             
-            let correctAnswer = randomPhraseArray[0] == phrase ? correctAnswerIfMore : correctAnswerIfLess
-            
+            let correctAnswer = randomPhraseArray[0] == moreOrLessPhase ? correctAnswerIfMore : correctAnswerIfLess
+                
             let question = QuizQuestion(image: imageData,
                                         text: text,
                                         correctAnswer: correctAnswer)

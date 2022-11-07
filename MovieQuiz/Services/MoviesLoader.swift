@@ -1,17 +1,19 @@
 import Foundation
 
-protocol MoviesLoading {
-    func loadMovies(handler: @escaping (Result<MostPopularMovies, Error>) -> Void)
-}
+
 
 struct MoviesLoader: MoviesLoading {
     // MARK: - NetworkClient
-    private let networkClient = NetworkClient()
     
+    private let networkClient: NetworkRouting
+    
+    init(networkClient: NetworkRouting = NetworkClient()){
+        self.networkClient = networkClient
+    }
     // MARK: - URL
     private var mostPopularMoviesUrl: URL {
         
-        guard let url = URL(string: "https://imdb-api.com/en/API/Top250Movies/k_h7m0bhlk") else {
+        guard let url = URL(string: "https://imdb-api.com/en/API/Top250Movies/k_c6ft04mn") else {
             preconditionFailure("Невозможно преобразовать mostPopularMoviesUrl")
         }
         return url

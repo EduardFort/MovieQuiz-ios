@@ -9,7 +9,7 @@ struct GameRecord: Codable, Comparable {
         return oldValue.correct < newValue.correct
     }
     
-    func toString() -> String {
+    func record() -> String {
         return "\(correct)/\(total) (\(date.dateTimeString))"
     }
 }
