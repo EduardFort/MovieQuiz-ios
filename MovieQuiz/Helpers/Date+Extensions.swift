@@ -4,6 +4,7 @@ private let dateTimeDefaultFormatter: DateFormatter = {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "dd.MM.YY hh:mm"
     return dateFormatter
+    
 }()
 
 extension Date {

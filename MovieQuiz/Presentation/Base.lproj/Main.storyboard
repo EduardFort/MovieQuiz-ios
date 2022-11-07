@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -41,6 +41,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="1/10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhu-5x-ucd" userLabel="indexLabel">
                                                 <rect key="frame" x="338" y="0.0" width="36" height="23.5"/>
                                                 <color key="tintColor" name="Black"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="Index"/>
                                                 <fontDescription key="fontDescription" name="YSDisplay-Medium" family="YS Display" pointSize="20"/>
                                                 <color key="textColor" name="White"/>
                                                 <nil key="highlightedColor"/>
@@ -50,6 +51,7 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zF5-kX-F0J" userLabel="previewImage">
                                         <rect key="frame" x="0.0" y="58.5" width="374" height="561"/>
                                         <color key="backgroundColor" name="White"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="Poster"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="zF5-kX-F0J" secondAttribute="height" multiplier="2:3" id="Tog-eW-Whd"/>
                                         </constraints>
@@ -72,6 +74,7 @@
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="llv-we-RsT" userLabel="NoButton">
                                                 <rect key="frame" x="0.0" y="0.0" width="177" height="60"/>
                                                 <color key="backgroundColor" name="White"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="No"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="Dqe-1i-RGy"/>
                                                 </constraints>
@@ -87,12 +90,13 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="noButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="V2w-Sc-X1G"/>
+                                                    <action selector="noButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AyW-Ey-mnH"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZXG-Tc-SKt" userLabel="YesButton">
                                                 <rect key="frame" x="197" y="0.0" width="177" height="60"/>
                                                 <color key="backgroundColor" name="White"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="Yes"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="PWQ-dg-qXn"/>
                                                 </constraints>
@@ -108,7 +112,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="yesButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h9Z-jG-2Bm"/>
+                                                    <action selector="yesButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N32-tj-pqb"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -126,20 +130,20 @@
                         <color key="backgroundColor" name="Black"/>
                         <constraints>
                             <constraint firstItem="SbY-VN-hji" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="2AV-4I-PFF"/>
-                            <constraint firstItem="F2i-ly-XlM" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="4e6-rg-H3s"/>
-                            <constraint firstItem="F2i-ly-XlM" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="6Of-Oh-iDN"/>
+                            <constraint firstItem="F2i-ly-XlM" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="IGS-VQ-fzK"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SbY-VN-hji" secondAttribute="bottom" id="Ne9-Gi-4Hn"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SbY-VN-hji" secondAttribute="trailing" constant="20" id="Tvm-4B-MgV"/>
+                            <constraint firstItem="F2i-ly-XlM" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="cbV-cH-WCd"/>
                             <constraint firstItem="SbY-VN-hji" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="qBw-bg-aFA"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="activityIndicator" destination="F2i-ly-XlM" id="FaU-sm-hiX"/>
-                        <outlet property="counterLabel" destination="yhu-5x-ucd" id="pub-PC-H2J"/>
-                        <outlet property="imageView" destination="zF5-kX-F0J" id="Zd7-gC-F0N"/>
-                        <outlet property="noButton" destination="llv-we-RsT" id="WSe-lS-s1u"/>
-                        <outlet property="textLabel" destination="UWy-qd-433" id="EdW-TZ-Olg"/>
-                        <outlet property="yesButton" destination="ZXG-Tc-SKt" id="QD2-fQ-8eC"/>
+                        <outlet property="activityIndicator" destination="F2i-ly-XlM" id="pKb-Ve-czR"/>
+                        <outlet property="counterLabel" destination="yhu-5x-ucd" id="qcS-Ws-7J5"/>
+                        <outlet property="imageView" destination="zF5-kX-F0J" id="CQc-aW-Fbj"/>
+                        <outlet property="noButton" destination="llv-we-RsT" id="1Qa-EP-7ui"/>
+                        <outlet property="questionLabel" destination="UWy-qd-433" id="Nec-tB-P87"/>
+                        <outlet property="yesButton" destination="ZXG-Tc-SKt" id="5y7-Iu-9kq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
