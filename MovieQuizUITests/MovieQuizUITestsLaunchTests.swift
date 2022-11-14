@@ -1,9 +1,3 @@
-//
-//  MovieQuizUITestsLaunchTests.swift
-//  MovieQuizUITests
-//
-//  Created by Eduard Fort on 14.11.2022.
-//
 
 import XCTest
 
